@@ -14,8 +14,8 @@
         {% for playersGoals in playerGoals %}
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ playersGoals.name }}
-                {{ playersGoals.club.name }}
+                <a href="{{ path('player_show', { 'slug': playersGoals.slug }) }}">{{ playersGoals.name }}</a>
+                <a href="{{ path('club_show', { 'slug': playersGoals.club.slug }) }}">{{ playersGoals.club.name }}</a>
                 <span class="badge bg-primary rounded-pill">{{ playersGoals.goalScored }}</span>
             </li>
         </ul>
@@ -27,8 +27,8 @@
         {% for playersKeyPasses in playerKeyPass %}
         <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
-                {{ playersKeyPasses.name }}
-                {{ playersKeyPasses.club.name }}
+                <a href="{{ path('player_show', { 'slug': playersKeyPasses.slug }) }}">{{ playersKeyPasses.name }}</a>
+                <a href="{{ path('club_show', { 'slug': playersKeyPasses.club.slug }) }}">{{ playersKeyPasses.club.name }}</a>
                 <span class="badge bg-primary rounded-pill">{{ playersKeyPasses.keyPass }}</span>
             </li>
         </ul>
