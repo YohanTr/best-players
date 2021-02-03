@@ -13,7 +13,7 @@ class PlayerController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('player/index.html.twig', [
+        return $this->render('player/show.html.twig', [
             'controller_name' => 'PlayerController',
         ]);
     }
