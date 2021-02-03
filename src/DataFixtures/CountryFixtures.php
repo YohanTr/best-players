@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Country;
+use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use App\DataFixtures\ClubFixtures;
@@ -16,9 +17,13 @@ class CountryFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+        $slugify = new Slugify();
         for ($i = 1; $i <= self::NB_OBJECT; $i++) {
             $country = new Country();
-            $country->setName($faker->country);
+            $name = $faker->name();
+            $slug = $slugify->slugify($name);
+            $country->setName($name);
+            $country->setSlug($slug);
             $this->addReference('country_' . $i, $country);
             $manager->persist($country);
         }

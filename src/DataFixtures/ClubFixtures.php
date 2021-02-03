@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Club;
+use Cocur\Slugify\Slugify;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -20,10 +21,14 @@ class ClubFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+        $slugify = new Slugify();
         for ($i = 1; $i <= self::NB_OBJECT; $i++) {
             $country = $this->getReference('country_' . $faker->numberBetween(1, 50));
             $club = new Club();
-            $club->setName($faker->city);
+            $name = $faker->city();
+            $slug = $slugify->slugify($name);
+            $club->setName($name);
+            $club->setSlug($slug);
             $club->setCountry($country);
             $manager->persist($club);
             $this->addReference('club_' . $i, $club);
