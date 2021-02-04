@@ -43,6 +43,35 @@ class PlayerController extends AbstractController
     }
 
     /**
+     * @Route("{slug}/edit", name="player_edit")
+     * @param Request $request
+     * @param Player $player
+     * @param slug $slug
+     * @return Response
+     */
+    public function edit(Request $request, Player $player, $slug): Response
+    {
+
+
+        $form = $this->createForm(PlayerType::class, $player);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $manager = $this->getDoctrine()->getManager();
+            $manager->persist($player);
+            $manager->flush();
+            $this->addFlash('success', 'Player Updated');
+            return $this->redirectToRoute('player_show', [
+                'slug' => $slug
+            ]);
+        }
+
+        return $this->render('player/new.html.twig', [
+            'player' => $player,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/player/{slug}", name="player_show")
      * @param $slug
      * @param PlayerRepository $repo

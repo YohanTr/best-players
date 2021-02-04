@@ -31,26 +31,31 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le champ est vide")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le champ est vide")
      */
     private $age;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le champ est vide")
      */
     private $gamePlayed;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le champ est vide")
      */
     private $goalScored;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank(message="Le champ est vide")
      */
     private $keyPass;
 
