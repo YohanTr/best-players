@@ -18,8 +18,10 @@ class ClubController extends AbstractController
     public function show($slug, ClubRepository $repo): Response
     {
         $club = $repo->findOneBySlug($slug);
+        $clubGoals = $repo->bestScorerClub(10);
         return $this->render('club/show.html.twig', [
             'club' => $club,
+            'clubGoals' => $clubGoals
         ]);
     }
 }
