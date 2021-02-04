@@ -16,3 +16,12 @@ window.$ = jQuery;
 window.jQuery = jQuery;
 require('@fortawesome/fontawesome-free/css/all.min.css');
 require('@fortawesome/fontawesome-free/js/all.js');
+
+
+$(document).ready(function() {
+    $('.cardPlayer').delay(1800).queue(function(next) {
+        $(this).removeClass('hover');
+        $('.aPlayer.hover').removeClass('hover');
+        next();
+    });
+});
