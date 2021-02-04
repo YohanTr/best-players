@@ -11,6 +11,8 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichFileType;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class PlayerType extends AbstractType
 {
@@ -38,6 +40,15 @@ class PlayerType extends AbstractType
             ->add('name', TextType::class,
                 $this->getConfiguration('Player\'s Name', 'Full Name Of The Player'))
             ->add('age', IntegerType::class, $this->getConfiguration('Age', 'Enter His Age'))
+            ->add('imageFile', VichImageType::class,  [
+                'label' => 'Player Picture)',
+                'required'      => false,
+                'allow_delete' => true,
+                'attr' => [
+                    'accept' => "image/jpeg, image/png",
+                    'placeholder' => "Choose picture"
+                ]])
+
             ->add('gamePlayed', IntegerType::class,
                 $this->getConfiguration('Game Played', 'Number of Game He Played'))
             ->add('goalScored', IntegerType::class,
