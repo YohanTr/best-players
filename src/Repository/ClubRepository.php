@@ -19,6 +19,20 @@ class ClubRepository extends ServiceEntityRepository
         parent::__construct($registry, Club::class);
     }
 
+    public function bestScorerClub($limit)
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.players', 'p')
+            ->select('p.name')
+            ->addSelect('p.goalScored')
+            ->addSelect('p.gamePlayed')
+            ->addSelect('p.slug')
+            ->orderBy('p.goalScored', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Club[] Returns an array of Club objects
     //  */
