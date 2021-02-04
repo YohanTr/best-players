@@ -3,8 +3,21 @@
 {% block title %}{{country.name}}'s Best Player{% endblock %}
 
 {% block body %}
+    <div class="cardCenter d-flex justify-content-center">
+        <div class="card hover cardPlayer">
+            <div class="card-img imgPlayer" style="background-image:url('assets/images/logo.png');";>
+                <div class="overlay">
+                    <div class="overlay-content">
+                    </div>
+                </div>
+            </div>
+            <div class="card-content card-content-player">
+                <h2 class="hPlayer text-center">{{ country.name }}</h2>
+                <ul id="listBio">
+                    <li><a href=""> National Team</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <h1>Hello {{ country.name }}! ✅</h1>
-
-</div>
 {% endblock %}
