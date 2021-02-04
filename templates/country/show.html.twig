@@ -3,9 +3,10 @@
 {% block title %}{{country.name}}'s Best Player{% endblock %}
 
 {% block body %}
+    <h2 class="text-center">Top 10 Scorer</h2>
     <div class="cardCenter d-flex justify-content-center">
         <div class="card hover cardPlayer">
-            <div class="card-img imgPlayer" style="background-image:url('assets/images/logo.png');";>
+            <div class="card-img imgPlayer" style="background-image:url('https://i.ytimg.com/vi/Ib0743WhQC8/maxresdefault.jpg');">
                 <div class="overlay">
                     <div class="overlay-content">
                     </div>
@@ -14,7 +15,9 @@
             <div class="card-content card-content-player">
                 <h2 class="hPlayer text-center">{{ country.name }}</h2>
                 <ul id="listBio">
-                    <li><a href=""> National Team</a></li>
+                    {% for goals in countryGoal %}
+                        <li><a href="{{ path ('player_show', { 'slug': goals.slug}) }}">{{ goals.name }} ({{ goals.gamePlayed }}  / {{ goals.goalScored }} )</a></li>
+                    {% endfor %}
                 </ul>
             </div>
         </div>
