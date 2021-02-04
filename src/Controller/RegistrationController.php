@@ -42,23 +42,20 @@ class RegistrationController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
+
             $entityManager = $this->getDoctrine()->getManager();
-            $user->setRoles(['ROLE_CONTRIBUTOR']);
             $entityManager->persist($user);
             $entityManager->flush();
 
             // generate a signed url and email it to the user
             $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
                 (new TemplatedEmail())
-                    ->from(new Address($this->getParameter('mailer_from'), 'PlayerStats'))
+                    ->from(new Address('mailer_from', 'PlayerStats'))
                     ->to($user->getEmail())
-                    ->subject('Confirm your account')
+                    ->subject('Please Confirm your Email')
                     ->htmlTemplate('registration/confirmation_email.html.twig')
             );
-
-            $this->addFlash('success', 'Check your mailbox to confirm your account.');
-            return $this->redirectToRoute('app_home');
-        }
+            // do anything else you need here, like send an email
 
             return $guardHandler->authenticateUserAndHandleSuccess(
                 $user,
@@ -66,11 +63,13 @@ class RegistrationController extends AbstractController
                 $authenticator,
                 'main' // firewall name in security.yaml
             );
-/*
+        }
+
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
-        ]);*/
+        ]);
     }
+
 
     /**
      * @Route("/verify/email", name="app_verify_email")
