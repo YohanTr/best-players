@@ -19,6 +19,20 @@ class CountryRepository extends ServiceEntityRepository
         parent::__construct($registry, Country::class);
     }
 
+    public function bestScorerCountry($limit)
+    {
+        return $this->createQueryBuilder('c')
+            ->join('c.players', 'p')
+            ->select('p.name')
+            ->addSelect('p.goalScored')
+            ->addSelect('p.gamePlayed')
+            ->addSelect('p.slug')
+            ->orderBy('p.goalScored', 'DESC')
+            ->setMaxResults($limit)
+            ->getQuery()
+            ->getResult();
+    }
+
     // /**
     //  * @return Country[] Returns an array of Country objects
     //  */

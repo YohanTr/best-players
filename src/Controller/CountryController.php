@@ -18,8 +18,10 @@ class CountryController extends AbstractController
     public function show($slug, CountryRepository $repo): Response
     {
         $country = $repo->findOneBySlug($slug);
+        $countryGoal = $repo->bestScorerCountry(10);
         return $this->render('country/show.html.twig', [
             'country' => $country,
+            'countryGoal' => $countryGoal
         ]);
     }
 }
