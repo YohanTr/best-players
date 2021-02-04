@@ -6,6 +6,7 @@ use App\Entity\Player;
 use App\Form\PlayerType;
 use App\Repository\PlayerRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,9 +17,10 @@ class PlayerController extends AbstractController
 {
 
     /**
-     * @Route("/player/new", name="player_new", methods={"POST"})
+     * @Route("/new", name="player_new")
      * @param Request $request
      * @param EntityManagerInterface $manager
+     * @IsGranted("ROLE_CONTRIBUTOR")
      * @return Response
      */
     public function new(Request $request, EntityManagerInterface $manager) : Response
@@ -32,10 +34,9 @@ class PlayerController extends AbstractController
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($player);
             $manager->flush();
+            $this->addFlash('success', 'Player added in the StatsDatabase');
 
         }
-        $this->addFlash('success', 'Player added in the StatsDatabase');
-
         return $this->render('player/new.html.twig', [
             'form' => $form->createView()
         ]);
