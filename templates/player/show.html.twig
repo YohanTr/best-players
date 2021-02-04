@@ -14,9 +14,9 @@
         <div class="card-content card-content-player">
                 <h2 class="hPlayer text-center">{{ player.name }}</h2>
                     <ul id="listBio">
-                        <li>{{ player.club }}'s Player</li>
+                        <li><a href="{{ path ('club_show', { 'slug': player.club.slug}) }}">{{ player.club }}'s Player</a></li>
                         <li>{{ player.age }} Years</li>
-                        <li>{{ player.country }} National Team</li>
+                        <li><a href="{{ path ('country_show', { 'slug': player.country.slug}) }}">{{ player.country }} National Team</a></li>
                         <li>{{ player.gamePlayed }} Games Played</li>
                         <li>{{ player.goalScored }} Goals Scored</li>
                         <li>{{ player.keyPass }} Decisive Passes</li>
