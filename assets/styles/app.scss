@@ -1,11 +1,59 @@
 body {
-    background-color: #DAF7A6;
     font-family: "Nunito", sans-serif;
+    background-color: rgb(191, 191, 191);
 }
-
 a {
     text-decoration: none;
     color: #07051a;
+}
+
+// Navbar //
+.customNav {
+    background-color: #212121;
+}
+
+.nav-link {
+    color: white;
+}
+
+.navbar-brand {
+    color: white;
+}
+
+#iconNav {
+    background-image: url('/assets/images/logo.png');
+}
+
+.navbar-toggler {
+    background-color: white;
+
+}
+
+// Login Form //
+#formLogin {
+    border: solid 1px lightgrey;
+    border-radius: 5px;
+    margin: 10px 10px 10px 10px;
+    display: grid;
+    justify-items: center;
+    background-color: lightgrey;
+    padding: 5px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+
+.buttonLogin {
+    background-color: #0074D9;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 // SearchBar //
@@ -25,17 +73,12 @@ a {
     box-sizing: border-box;
 }
 
-body {
-    padding: 1rem 0;
-    background: #f9f9fb;
-}
-
 .cardPlayer {
     width: 300px;
     display: inline-block;
     margin: 1rem;
     border-radius: 4px;
-    box-shadow: 0 -1px 1px 0 rgba(0,0,0,.05), 0 1px 2px 0 rgba(0,0,0,.2);
+    box-shadow: 0 -1px 1px 0 rgba(0, 0, 0, .05), 0 1px 2px 0 rgba(0, 0, 0, .2);
     transition: all .2s ease;
     background: #fff;
     position: relative;
@@ -43,7 +86,7 @@ body {
 
     &:hover, &.hover {
         transform: translateY(-4px);
-        box-shadow: 0 4px 25px 0 rgba(0,0,0,.3), 0 0 1px 0 rgba(0,0,0,.25);
+        box-shadow: 0 4px 25px 0 rgba(0, 0, 0, .3), 0 0 1px 0 rgba(0, 0, 0, .25);
 
         & .card-content-player {
             box-shadow: inset 0 3px 0 0 #ccb65e;
@@ -51,7 +94,7 @@ body {
         }
 
         & .imgPlayer .overlay {
-            background-color: rgba(25,29,38,.85);
+            background-color: rgba(25, 29, 38, .85);
             transition: opacity .2s ease;
             opacity: 1;
         }
@@ -86,7 +129,7 @@ body {
                     color: #fff;
                     padding: 0 2rem;
                     display: inline-block;
-                    border: 1px solid rgba(255,255,255,.4);
+                    border: 1px solid rgba(255, 255, 255, .4);
                     height: 40px;
                     line-height: 40px;
                     border-radius: 20px;
@@ -131,8 +174,9 @@ body {
             color: rgba(32, 41, 28, .8);
         }
     }
+
     #listBio > li {
         list-style: none;
     }
-
 }
+
