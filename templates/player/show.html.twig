@@ -13,5 +13,13 @@
     <h1>Hello {{ player.age }}! ✅</h1>
     <h1>Hello {{ player.club }}! ✅</h1>
 
+    <p>
+        {{ player.goalScored / player.gamePlayed |round(-2, 'floor') }} Goals/Games Ratio
+    </p>
+
+    <p>
+        {{ player.keyPass / player.gamePlayed |round(-2, 'floor') }} Pass/Games Ratio
+    </p>
+
 </div>
 {% endblock %}
