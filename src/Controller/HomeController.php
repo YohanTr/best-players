@@ -19,7 +19,7 @@ class HomeController extends AbstractController
 
         return $this->render('home.html.twig', [
                 'playerGoals' => $playerRepository->countGoal(10),
-                'playerKeyPass' => $playerRepository->countKeyPass(10)
+                'playerKeyPass' => $playerRepository->countKeyPass(10),
             ]
         );
     }

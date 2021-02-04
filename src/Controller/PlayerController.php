@@ -48,7 +48,7 @@ class PlayerController extends AbstractController
     {
         $player = $repo->findOneBySlug($slug);
         return $this->render('player/show.html.twig', [
-            'player' => $player
+            'player' => $player,
         ]);
     }
 }
