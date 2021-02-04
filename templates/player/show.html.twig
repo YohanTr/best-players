@@ -2,46 +2,29 @@
 
 {% block title %}Hello PlayerController!{% endblock %}
 {% block body %}
-{#<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ player.name }}! ✅</h1>
-    <h1>Hello {{ player.age }}! ✅</h1>
-    <h1>Hello {{ player.club }}! ✅</h1>
-
-    <p>
-        {{ player.goalScored / player.gamePlayed |round(-2, 'floor') }} Goals/Games Ratio
-    </p>
-
-    <p>
-        {{ player.keyPass / player.gamePlayed |round(-2, 'floor') }} Pass/Games Ratio
-    </p>
-
-</div>#}
+<div class="cardCenter d-flex justify-content-center">
     <div class="card hover cardPlayer">
         <div class="card-img imgPlayer" style="background-image:url('{{asset('/uploads/images/' ~ player.image)}}')";>
             <div class="overlay">
                 <div class="overlay-content">
-                    <a class="aPlayer" href="#!">View Project</a>
+                    <a class="aPlayer" href="{{ path('player_edit', { 'slug': player.slug }) }}">Edit Player</a>
                 </div>
             </div>
         </div>
-
         <div class="card-content card-content-player">
-            <a class="aPlayer" href="#!">
                 <h2 class="hPlayer text-center">{{ player.name }}</h2>
                     <ul id="listBio">
-                        <li>{{ player.club }} Players</li>
+                        <li>{{ player.club }}'s Player</li>
                         <li>{{ player.age }} Years</li>
                         <li>{{ player.country }} National Team</li>
+                        <li>{{ player.gamePlayed }} Games Played</li>
+                        <li>{{ player.goalScored }} Goals Scored</li>
+                        <li>{{ player.keyPass }} Decisive Passes</li>
                         <li>{{ player.goalScored / player.gamePlayed |round(-2, 'floor') }} Goals/Games Ratio</li>
                         <li>{{ player.keyPass / player.gamePlayed |round(-2, 'floor') }} Pass/Games Ratio</li>
                     </ul>
-            </a>
         </div>
     </div>
+</div>
 
 {% endblock %}
