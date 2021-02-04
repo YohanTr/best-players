@@ -29,6 +29,10 @@ a {
 
 }
 
+#sticky-footer {
+     flex-shrink: none;
+ }
+
 // Login Form //
 #formLogin {
     border: solid 1px lightgrey;
