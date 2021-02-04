@@ -1,7 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
-    {{ form(form) }}
-    <input type='submit' value='Add Player'>
-    {{ form_end(form) }}
+    <div class="contenaire">
+        <h1>Add a player</h1>
+
+        {{ form_start(form) }}
+
+        {{ form_end(form) }}
+
+    </div>
 {% endblock %}
+
+
