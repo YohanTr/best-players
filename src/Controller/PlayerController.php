@@ -11,6 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
 
 class PlayerController extends AbstractController
@@ -25,6 +26,7 @@ class PlayerController extends AbstractController
      */
     public function new(Request $request, EntityManagerInterface $manager) : Response
     {
+
         $player = new Player();
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
@@ -47,11 +49,11 @@ class PlayerController extends AbstractController
      * @param Request $request
      * @param Player $player
      * @param slug $slug
+     * @IsGranted("ROLE_CONTRIBUTOR")
      * @return Response
      */
     public function edit(Request $request, Player $player, $slug): Response
     {
-
 
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);

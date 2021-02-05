@@ -31,31 +31,35 @@ class Player
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Le champ est vide")
+     * @Assert\NotBlank(message="Field empty")
      */
     private $name;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Le champ est vide")
+     * @Assert\NotBlank(message="Field empty")
+     * @Assert\Regex("/^[0-9]*$/")
      */
     private $age;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Le champ est vide")
+     * @Assert\NotBlank(message="Field empty")
+     * @Assert\Regex("/^[0-9]*$/")
      */
     private $gamePlayed;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Le champ est vide")
+     * @Assert\NotBlank(message="Field empty")
+     * @Assert\Regex("/^[0-9]*$/")
      */
     private $goalScored;
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\NotBlank(message="Le champ est vide")
+     * @Assert\NotBlank(message="Field empty")
+     * @Assert\Regex("/^[0-9]*$/")
      */
     private $keyPass;
 
@@ -109,6 +113,7 @@ class Player
         if(empty($this->slug)) {
             $slugify = new Slugify();
             $this->slug = $slugify->slugify($this->name);
+            $this->setSlug($this);
         }
     }
 

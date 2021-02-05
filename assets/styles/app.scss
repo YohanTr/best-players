@@ -1,7 +1,14 @@
 body {
     font-family: "Nunito", sans-serif;
     background-color: rgb(191, 191, 191);
+    min-height: 100vh;
+    flex-direction: column;
 }
+
+main {
+    flex: 1;
+}
+
 a {
     text-decoration: none;
     color: #07051a;
@@ -26,12 +33,7 @@ a {
 
 .navbar-toggler {
     background-color: white;
-
 }
-
-#sticky-footer {
-     flex-shrink: none;
- }
 
 // Login Form //
 #formLogin {
@@ -70,6 +72,12 @@ a {
 #mainStat {
     margin-left: 10px;
     margin-right: 10px;
+}
+
+#goalTable {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
 }
 
 // Show Player //
@@ -186,5 +194,6 @@ a {
     #listBio > li {
         list-style: none;
     }
+
 }
 

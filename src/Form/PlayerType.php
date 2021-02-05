@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Player;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -41,12 +42,12 @@ class PlayerType extends AbstractType
                 $this->getConfiguration('Player\'s Name', 'Full Name Of The Player'))
             ->add('age', IntegerType::class, $this->getConfiguration('Age', 'Enter His Age'))
             ->add('imageFile', VichImageType::class,  [
-                'label' => 'Player Picture)',
+                'label' => 'Player Picture',
                 'required'      => false,
                 'allow_delete' => true,
                 'attr' => [
                     'accept' => "image/jpeg, image/png",
-                    'placeholder' => "Choose picture"
+                    'class' => 'form-control-file'
                 ]])
 
             ->add('gamePlayed', IntegerType::class,
@@ -65,7 +66,7 @@ class PlayerType extends AbstractType
             ->add('save', SubmitType::class, [
                 'label' => 'Add Player',
                 'attr' => [
-                    'class' => 'btn btn-primary'
+                    'class' => 'btn btn-lg buttonLogin'
                     ]
             ])
             ->getForm()
