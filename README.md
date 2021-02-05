@@ -10,6 +10,8 @@ Instruction:
              php bin/console doctrine:migration:migrate
              php bin/console doctrine:fixtures:load
              
+- Enter your mailtrap in .env.local
+             
              
 - symfony server:start
 - yarn encore dev
