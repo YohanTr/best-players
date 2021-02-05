@@ -56,9 +56,6 @@ class PlayerType extends AbstractType
                 $this->getConfiguration('Goal Scored', 'Number of Goal He Scored'))
             ->add('keyPass', IntegerType::class,
                 $this->getConfiguration('Key Pass', 'Number of Key Pass He Given'))
-            ->add('slug', TextType::class, $this->getConfiguration('Slug', 'Slug', [
-                'required' => false
-            ]))
             ->add('club', null,
                 $this->getConfiguration('Actual Team', 'Where He Played'))
             ->add('country', null,
