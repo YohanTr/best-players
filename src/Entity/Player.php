@@ -104,19 +104,6 @@ class Player
         return $this->id;
     }
 
-    /**
-     * @ORM\PrePersist()
-     * @ORM\PreUpdate()
-     * @return void
-     */
-    public function initializeSlug() {
-        if(empty($this->slug)) {
-            $slugify = new Slugify();
-            $this->slug = $slugify->slugify($this->name);
-            $this->setSlug($this);
-        }
-    }
-
     public function getName(): ?string
     {
         return $this->name;

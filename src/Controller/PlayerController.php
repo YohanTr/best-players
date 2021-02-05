@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Player;
 use App\Form\PlayerType;
 use App\Repository\PlayerRepository;
+use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,11 +29,14 @@ class PlayerController extends AbstractController
     {
 
         $player = new Player();
+        $slugify = new Slugify();
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $slug = $slugify->slugify($player->getName());
+            $player->setSlug($slug);
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($player);
             $manager->flush();
@@ -52,12 +56,16 @@ class PlayerController extends AbstractController
      * @IsGranted("ROLE_CONTRIBUTOR")
      * @return Response
      */
-    public function edit(Request $request, Player $player, $slug): Response
+    public function edit(Request $request, Player $player, $slug, Slugify $slugify): Response
     {
 
         $form = $this->createForm(PlayerType::class, $player);
         $form->handleRequest($request);
+        $slugify = new Slugify();
+
         if ($form->isSubmitted() && $form->isValid()) {
+            $slug = $slugify->slugify($player->getName());
+            $player->setSlug($slug);
             $manager = $this->getDoctrine()->getManager();
             $manager->persist($player);
             $manager->flush();

@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello PlayerController!{% endblock %}
+{% block title %}{{ player.name }}'s Stats{% endblock %}
 {% block body %}
 <div class="cardCenter d-flex justify-content-center">
     <div class="card hover cardPlayer">
@@ -20,8 +20,8 @@
                         <li>{{ player.gamePlayed }} Games Played</li>
                         <li>{{ player.goalScored }} Goals Scored</li>
                         <li>{{ player.keyPass }} Decisive Passes</li>
-                        <li>{{ player.goalScored / player.gamePlayed |round(-2, 'floor') }} Goals/Games Ratio</li>
-                        <li>{{ player.keyPass / player.gamePlayed |round(-2, 'floor') }} Pass/Games Ratio</li>
+                        <li>{{ (player.goalScored / player.gamePlayed) | round(2, 'floor') }} Goals/Games Ratio</li>
+                        <li>{{ (player.keyPass / player.gamePlayed) |round(2, 'floor') }} Pass/Games Ratio</li>
                     </ul>
         </div>
     </div>
