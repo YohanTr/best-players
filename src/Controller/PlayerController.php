@@ -56,7 +56,7 @@ class PlayerController extends AbstractController
      * @IsGranted("ROLE_CONTRIBUTOR")
      * @return Response
      */
-    public function edit(Request $request, Player $player, $slug, Slugify $slugify): Response
+    public function edit(Request $request, Player $player, $slug): Response
     {
 
         $form = $this->createForm(PlayerType::class, $player);
