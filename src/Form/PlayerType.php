@@ -45,6 +45,7 @@ class PlayerType extends AbstractType
                 'label' => 'Player Picture',
                 'required'      => false,
                 'allow_delete' => true,
+                'download_label' => false,
                 'attr' => [
                     'accept' => "image/jpeg, image/png",
                     'class' => 'form-control-file'
