@@ -3,12 +3,11 @@
 namespace App\Controller;
 
 use App\Repository\ClubRepository;
-use http\Client;
-use http\Client\Request;
+use GuzzleHttp\Client;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpClient\HttpClient;
+
 class ClubController extends AbstractController
 {
     /**
@@ -32,20 +31,13 @@ class ClubController extends AbstractController
      */
     public function getTeams()
     {
-        $client = new Client;
-        $request = new Request;
 
-        $request->setRequestUrl('https://v3.football.api-sports.io/teams');
-        $request->setRequestMethod('GET');
-        $request->setHeaders(array(
-            'x-rapidapi-host' => 'v3.football.api-sports.io',
-            'x-rapidapi-key' => 'd52d47c0b09da4de8adcdf1397935705'
-        ));
+        $client = new Client();
 
-        $client->enqueue($request)->send();
-        $response = $client->getResponse();
-
-        echo $response->getBody();
-
+        $uri = 'https://api-football-v1.p.rapidapi.com/v2/teams/team/33';
+        $header = array('headers' => array('api-football-v1.p.rapidapi.com' => 'b41532b8a4msh3ecbb82b0c9abedp1cf413jsn5e93690ad270'));
+        $response = $client->get($uri, $header);
+        $json = $response->json();
     }
 }
+
